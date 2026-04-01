@@ -1,0 +1,152 @@
+/* =========================================================
+   VARIABLES & RESET (Dark SaaS Aesthetic)
+   ========================================================= */
+   :root {
+    --bg-base: #09090b;       /* Negro zinc profundo */
+    --surface: rgba(24, 24, 27, 0.6); /* Gris semi-transparente */
+    --surface-hover: rgba(39, 39, 42, 0.8);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-highlight: rgba(255, 255, 255, 0.2);
+    
+    --text-main: #f4f4f5;     /* Blanco suave */
+    --text-muted: #a1a1aa;    /* Gris claro */
+    
+    --primary: #ffffff;       /* Botones blancos para contraste puro */
+    --primary-text: #000000;
+    --accent: #3b82f6;        /* Azul eléctrico sutil para acentos */
+    
+    --radius: 16px;
+    --radius-pill: 999px;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Luces de fondo fluidas */
+.bg-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.15;
+    pointer-events: none;
+}
+.glow-1 { width: 400px; height: 400px; background: #ffffff; top: -100px; left: -100px; }
+.glow-2 { width: 500px; height: 500px; background: var(--accent); bottom: -200px; right: -100px; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.mt-2 { margin-top: 2rem; }
+.text-gradient {
+    background: linear-gradient(to right, #ffffff, #71717a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================
+   UTILITIES (Glassmorphism & Botones)
+   ========================================================= */
+.glass {
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+}
+
+.glass-card {
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: var(--transition);
+}
+.glass-card:hover { border-color: var(--border-highlight); transform: translateY(-4px); }
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid transparent;
+}
+.btn-primary { background: var(--primary); color: var(--primary-text); }
+.btn-primary:hover { background: #e4e4e7; transform: scale(1.02); box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+.btn-glass { background: rgba(255,255,255,0.05); color: var(--text-main); border: 1px solid var(--border); }
+.btn-glass:hover { background: rgba(255,255,255,0.1); }
+.btn-block { width: 100%; }
+
+/* =========================================================
+   NAVBAR & SPA ROUTING
+   ========================================================= */
+.navbar { position: sticky; top: 0; z-index: 50; padding: 1rem 0; }
+.navbar-content { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 800; cursor: pointer; letter-spacing: -0.5px; }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; transition: var(--transition); }
+.nav-links a:hover, .nav-links a.active-link { color: var(--text-main); }
+
+.content-wrapper { padding: 3rem 1.5rem 6rem 1.5rem; }
+.view { display: none; animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); }
+.view.active { display: block; }
+.view-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+
+/* =========================================================
+   HOME (Hero & About)
+   ========================================================= */
+.hero { text-align: center; padding: 4rem 0 6rem 0; }
+.hero-badge { display: inline-block; padding: 0.4rem 1rem; border-radius: var(--radius-pill); background: rgba(255,255,255,0.05); border: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2rem; }
+.hero-title { font-size: 4rem; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 1.5rem; }
+.hero-subtitle { font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem auto; }
+.hero-buttons { display: flex; gap: 1rem; justify-content: center; }
+
+.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.icon-box { width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; }
+
+/* =========================================================
+   TARJETAS Y FILTROS
+   ========================================================= */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+.badge { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-main); padding: 0.3rem 0.8rem; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 500; }
+.card-title { font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 600; }
+.card-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; }
+.card-footer { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 1rem; }
+
+.filters-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.filter-tag { padding: 0.5rem 1rem; border-radius: var(--radius-pill); border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; transition: var(--transition); font-size: 0.85rem; }
+.filter-tag:hover { border-color: var(--border-highlight); color: var(--text-main); }
+.filter-tag.active { background: var(--text-main); color: var(--bg-base); }
+
+/* =========================================================
+   FORMS, LOGIN Y MODAL
+   ========================================================= */
+.login-wrapper { display: flex; justify-content: center; align-items: center; min-height: 60vh; }
+.login-card { width: 100%; max-width: 400px; text-align: center; }
+.center-icon { margin: 0 auto 1.5rem auto; }
+
+.form-group { margin-bottom: 1.5rem; text-align: left; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.8rem 1rem; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 12px; color: var(--text-main); outline: none; transition: var(--transition); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--border-highlight); box-shadow: 0 0 0 2px rgba(255,255,255,0.1); }
+.error-msg { color: #ef4444; font-size: 0.85rem; margin-bottom: 1rem; }
+
+.modal { margin: auto; padding: 2rem; border-radius: 20px; border: 1px solid var(--border); width: 90%; max-width: 500px; color: var(--text-main); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+.modal::backdrop { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); }
+.modal-header { display: flex; justify-content: space-between; margin-bottom: 2rem; }
+.btn-icon { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; transition: var(--transition); }
+.btn-icon:hover { color: var(--text-main); transform: rotate(90deg); }
+
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
