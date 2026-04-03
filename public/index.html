@@ -15,21 +15,24 @@
         <div class="container navbar-content">
             <h1 class="logo" data-route="home">Conecta<span class="text-gradient">PRO</span></h1>
             
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar vacante, talento o palabra clave...">
+            </div>
+
             <nav class="nav-links">
                 <a href="#" data-route="home">Inicio</a>
                 <a href="#" data-route="offers">Empleos</a>
                 <a href="#" data-route="professionals">Talento</a>
             </nav>
 
-            <div class="auth-section" id="authSection">
-                </div>
+            <div class="auth-section" id="authSection"></div>
         </div>
     </header>
 
     <main class="container content-wrapper">
         <section id="view-home" class="view active">
             <div class="hero">
-                <div class="hero-badge">🚀 Plataforma Exclusiva UDP</div>
+                <div class="hero-badge">🚀 Plataforma Exclusiva UDP & Más</div>
                 <h2 class="hero-title">El futuro del talento<br><span class="text-gradient">conecta aquí.</span></h2>
                 <p class="hero-subtitle">Una experiencia fluida para encontrar oportunidades y ofrecer tus habilidades al más alto nivel.</p>
                 <div class="hero-buttons">
@@ -42,7 +45,7 @@
                 <div class="glass-card about-card">
                     <div class="icon-box">✦</div>
                     <h3>¿Quiénes Somos?</h3>
-                    <p>4 estudiantes de <strong>Ing. Civil en Informática y Telecomunicaciones (UDP)</strong>: Benjamín, Jeremías, Marcelo y Julyan. Creando software de alto rendimiento.</p>
+                    <p>4 estudiantes de <strong>Ing. Civil en Informática y Telecomunicaciones (UDP)</strong>. Creando software de alto rendimiento.</p>
                 </div>
                 <div class="glass-card about-card">
                     <div class="icon-box">⚡</div>
@@ -75,12 +78,12 @@
                 <div class="glass-card login-card">
                     <div class="icon-box center-icon">🔒</div>
                     <h2>Acceso Interno</h2>
-                    <p class="text-muted">Solo fundadores (Ej: benjamin)</p>
+                    <p class="text-muted">Ingresa tu usuario registrado</p>
                     <form id="loginForm" class="mt-2">
                         <div class="form-group">
-                            <input type="text" id="username" required placeholder="Ingresa tu usuario...">
+                            <input type="text" id="username" required placeholder="Ej: maryon, sebastian...">
                         </div>
-                        <p id="loginError" class="error-msg" style="display: none;">Acceso denegado.</p>
+                        <p id="loginError" class="error-msg" style="display: none;">Acceso denegado. Usuario no existe.</p>
                         <button type="submit" class="btn btn-primary btn-block">Autenticar</button>
                     </form>
                 </div>
@@ -98,11 +101,15 @@
                 <input type="hidden" id="postType">
                 <div class="form-group">
                     <label>Título de la publicación</label>
-                    <input type="text" id="postTitle" required placeholder="Ej: Desarrollador Backend">
+                    <input type="text" id="postTitle" required placeholder="Ej: Tecnólogo Médico">
                 </div>
                 <div class="form-group">
                     <label>Categoría</label>
                     <select id="postCategory" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Precio / Presupuesto (CLP)</label>
+                    <input type="number" id="postPrice" placeholder="Ej: 25000 (Dejar vacío para 'Conversable')">
                 </div>
                 <div class="form-group">
                     <label>Descripción detallada</label>
@@ -113,7 +120,6 @@
         </div>
     </dialog>
 
-    <script src="./js/data.js"></script>
     <script src="./js/app.js"></script>
 </body>
-</html>
+</html> 

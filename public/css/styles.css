@@ -1,19 +1,21 @@
 /* =========================================================
    VARIABLES & RESET (Dark SaaS Aesthetic)
    ========================================================= */
-   :root {
-    --bg-base: #09090b;       /* Negro zinc profundo */
-    --surface: rgba(24, 24, 27, 0.6); /* Gris semi-transparente */
+:root {
+    --bg-base: #09090b;       
+    --surface: rgba(24, 24, 27, 0.6); 
     --surface-hover: rgba(39, 39, 42, 0.8);
     --border: rgba(255, 255, 255, 0.08);
     --border-highlight: rgba(255, 255, 255, 0.2);
     
-    --text-main: #f4f4f5;     /* Blanco suave */
-    --text-muted: #a1a1aa;    /* Gris claro */
+    --text-main: #f4f4f5;     
+    --text-muted: #a1a1aa;    
     
-    --primary: #ffffff;       /* Botones blancos para contraste puro */
+    --primary: #ffffff;       
     --primary-text: #000000;
-    --accent: #3b82f6;        /* Azul eléctrico sutil para acentos */
+    --accent: #3b82f6;        
+    --price-color: #10b981; /* Verde esmeralda para precios */
+    --star-color: #fbbf24;  /* Amarillo dorado para estrellas */
     
     --radius: 16px;
     --radius-pill: 999px;
@@ -22,66 +24,24 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
 
-body {
-    background-color: var(--bg-base);
-    color: var(--text-main);
-    line-height: 1.6;
-    overflow-x: hidden;
-    position: relative;
-    min-height: 100vh;
-}
+body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.6; overflow-x: hidden; position: relative; min-height: 100vh; }
 
-/* Luces de fondo fluidas */
-.bg-glow {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(120px);
-    z-index: -1;
-    opacity: 0.15;
-    pointer-events: none;
-}
+.bg-glow { position: fixed; border-radius: 50%; filter: blur(120px); z-index: -1; opacity: 0.15; pointer-events: none; }
 .glow-1 { width: 400px; height: 400px; background: #ffffff; top: -100px; left: -100px; }
 .glow-2 { width: 500px; height: 500px; background: var(--accent); bottom: -200px; right: -100px; }
 
-.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 .mt-2 { margin-top: 2rem; }
-.text-gradient {
-    background: linear-gradient(to right, #ffffff, #71717a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+.text-gradient { background: linear-gradient(to right, #ffffff, #71717a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
 /* =========================================================
-   UTILITIES (Glassmorphism & Botones)
+   UTILITIES
    ========================================================= */
-.glass {
-    background: var(--surface);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-}
+.glass { background: var(--surface); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+.glass-card { background: var(--surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; transition: var(--transition); display: flex; flex-direction: column; }
+.glass-card:hover { border-color: var(--border-highlight); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-.glass-card {
-    background: var(--surface);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
-    transition: var(--transition);
-}
-.glass-card:hover { border-color: var(--border-highlight); transform: translateY(-4px); }
-
-.btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--radius-pill);
-    font-weight: 500;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: var(--transition);
-    display: inline-flex; align-items: center; justify-content: center;
-    border: 1px solid transparent;
-}
+.btn { padding: 0.75rem 1.5rem; border-radius: var(--radius-pill); font-weight: 500; font-size: 0.95rem; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; border: 1px solid transparent; }
 .btn-primary { background: var(--primary); color: var(--primary-text); }
 .btn-primary:hover { background: #e4e4e7; transform: scale(1.02); box-shadow: 0 0 20px rgba(255,255,255,0.2); }
 .btn-glass { background: rgba(255,255,255,0.05); color: var(--text-main); border: 1px solid var(--border); }
@@ -89,11 +49,16 @@ body {
 .btn-block { width: 100%; }
 
 /* =========================================================
-   NAVBAR & SPA ROUTING
+   NAVBAR & BUSCADOR
    ========================================================= */
 .navbar { position: sticky; top: 0; z-index: 50; padding: 1rem 0; }
-.navbar-content { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 1.5rem; font-weight: 800; cursor: pointer; letter-spacing: -0.5px; }
+.navbar-content { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+.logo { font-size: 1.5rem; font-weight: 800; cursor: pointer; letter-spacing: -0.5px; flex-shrink: 0; }
+
+.search-wrapper { flex-grow: 1; max-width: 400px; min-width: 200px; }
+.search-input { width: 100%; padding: 0.6rem 1.2rem; border-radius: var(--radius-pill); background: rgba(0,0,0,0.3); border: 1px solid var(--border); color: var(--text-main); outline: none; transition: var(--transition); }
+.search-input:focus { border-color: var(--border-highlight); background: rgba(0,0,0,0.5); }
+
 .nav-links { display: flex; gap: 2rem; }
 .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; transition: var(--transition); }
 .nav-links a:hover, .nav-links a.active-link { color: var(--text-main); }
@@ -101,10 +66,10 @@ body {
 .content-wrapper { padding: 3rem 1.5rem 6rem 1.5rem; }
 .view { display: none; animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); }
 .view.active { display: block; }
-.view-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.view-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
 
 /* =========================================================
-   HOME (Hero & About)
+   HOME 
    ========================================================= */
 .hero { text-align: center; padding: 4rem 0 6rem 0; }
 .hero-badge { display: inline-block; padding: 0.4rem 1rem; border-radius: var(--radius-pill); background: rgba(255,255,255,0.05); border: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2rem; }
@@ -121,9 +86,15 @@ body {
 .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
 .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
 .badge { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-main); padding: 0.3rem 0.8rem; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 500; }
+.price-tag { font-weight: 800; color: var(--price-color); font-size: 1.1rem; }
+
 .card-title { font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 600; }
-.card-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; }
-.card-footer { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 1rem; }
+.card-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 1rem; flex-grow: 1; } /* flex-grow empuja los botones abajo */
+
+.card-rating { color: var(--star-color); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+.rating-number { color: var(--text-muted); font-size: 0.8rem; margin-left: 5px; letter-spacing: normal;}
+
+.card-footer { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 1rem; margin-bottom: 1rem; }
 
 .filters-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
 .filter-tag { padding: 0.5rem 1rem; border-radius: var(--radius-pill); border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; transition: var(--transition); font-size: 0.85rem; }
